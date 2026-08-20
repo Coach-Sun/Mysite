@@ -1,892 +1,876 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="zh-Hant">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2685.7">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="陪伴你探索自己、看見更多可能，在人生低潮與轉折中找回信心，也協助年輕人建立人生方向與自我管理能力。"
+  />
+  <title>探索自己，活出更多可能</title>
+
+  <style>
+    :root {
+      --bg: #fbf8f3;
+      --bg-soft: #f5eee4;
+      --card: rgba(255, 255, 255, 0.82);
+      --text: #3d3a35;
+      --text-soft: #706a61;
+      --accent: #c97855;
+      --accent-dark: #9f583d;
+      --accent-soft: #f3d7c8;
+      --green: #718b78;
+      --line: rgba(61, 58, 53, 0.1);
+      --shadow: 0 18px 50px rgba(86, 66, 52, 0.08);
+      --radius-lg: 30px;
+      --radius-md: 22px;
+      --radius-sm: 14px;
+      --max-width: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family:
+        "Noto Sans TC",
+        "PingFang TC",
+        "Microsoft JhengHei",
+        system-ui,
+        -apple-system,
+        sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 10% 10%, rgba(243, 215, 200, 0.65), transparent 28%),
+        radial-gradient(circle at 90% 30%, rgba(204, 219, 205, 0.55), transparent 25%),
+        var(--bg);
+      line-height: 1.8;
+      letter-spacing: 0.02em;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(calc(100% - 40px), var(--max-width));
+      margin: 0 auto;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(251, 248, 243, 0.86);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav-inner {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      font-size: 1.05rem;
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--accent-soft);
+      font-size: 1.1rem;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      color: var(--text-soft);
+      font-size: 0.94rem;
+      font-weight: 600;
+    }
+
+    .nav-links a {
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent-dark);
+    }
+
+    .hero {
+      min-height: calc(100vh - 72px);
+      display: flex;
+      align-items: center;
+      padding: 90px 0 80px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      margin-bottom: 24px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.65);
+      border: 1px solid rgba(201, 120, 85, 0.18);
+      color: var(--accent-dark);
+      font-size: 0.88rem;
+      font-weight: 700;
+    }
+
+    h1 {
+      max-width: 720px;
+      font-size: clamp(2.7rem, 6vw, 5.5rem);
+      line-height: 1.12;
+      letter-spacing: -0.035em;
+      margin-bottom: 28px;
+    }
+
+    h1 span {
+      color: var(--accent);
+    }
+
+    .hero-text {
+      max-width: 680px;
+      color: var(--text-soft);
+      font-size: clamp(1rem, 1.7vw, 1.18rem);
+      margin-bottom: 36px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 0 24px;
+      border-radius: 999px;
+      font-weight: 800;
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      box-shadow: 0 12px 28px rgba(201, 120, 85, 0.25);
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-dark);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px solid var(--line);
+    }
+
+    .hero-art {
+      position: relative;
+      min-height: 490px;
+      display: grid;
+      place-items: center;
+    }
+
+    .visual-card {
+      position: relative;
+      width: min(100%, 410px);
+      aspect-ratio: 0.88;
+      overflow: hidden;
+      border-radius: 42px;
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255,255,255,0.92),
+          rgba(245,238,228,0.78)
+        );
+      border: 1px solid rgba(255,255,255,0.8);
+      box-shadow: var(--shadow);
+    }
+
+    .visual-circle {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(1px);
+    }
+
+    .circle-one {
+      width: 230px;
+      height: 230px;
+      top: -40px;
+      right: -45px;
+      background: var(--accent-soft);
+    }
+
+    .circle-two {
+      width: 190px;
+      height: 190px;
+      left: -50px;
+      bottom: 65px;
+      background: rgba(166, 193, 171, 0.45);
+    }
+
+    .circle-three {
+      width: 90px;
+      height: 90px;
+      right: 38px;
+      bottom: 45px;
+      background: rgba(242, 205, 125, 0.58);
+    }
+
+    .visual-content {
+      position: absolute;
+      inset: 0;
+      padding: 48px 38px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      z-index: 2;
+    }
+
+    .visual-icon {
+      width: 64px;
+      height: 64px;
+      display: grid;
+      place-items: center;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.78);
+      box-shadow: 0 10px 30px rgba(83, 67, 56, 0.08);
+      font-size: 2rem;
+    }
+
+    .visual-quote {
+      max-width: 290px;
+      font-size: 1.55rem;
+      line-height: 1.5;
+      font-weight: 800;
+    }
+
+    .visual-caption {
+      color: var(--text-soft);
+      font-size: 0.9rem;
+    }
+
+    section {
+      padding: 105px 0;
+    }
+
+    .section-label {
+      margin-bottom: 14px;
+      color: var(--accent-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 0.82rem;
+      font-weight: 800;
+    }
+
+    .section-title {
+      max-width: 720px;
+      font-size: clamp(2rem, 4vw, 3.25rem);
+      line-height: 1.25;
+      letter-spacing: -0.025em;
+      margin-bottom: 24px;
+    }
+
+    .section-intro {
+      max-width: 760px;
+      color: var(--text-soft);
+      font-size: 1.05rem;
+    }
+
+    .about-box {
+      margin-top: 42px;
+      padding: 42px;
+      border-radius: var(--radius-lg);
+      background: var(--card);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      box-shadow: var(--shadow);
+    }
+
+    .about-box p + p {
+      margin-top: 20px;
+    }
+
+    .highlight {
+      color: var(--accent-dark);
+      font-weight: 800;
+    }
+
+    .services {
+      background: rgba(255, 255, 255, 0.34);
+      border-top: 1px solid rgba(61, 58, 53, 0.05);
+      border-bottom: 1px solid rgba(61, 58, 53, 0.05);
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      margin-top: 46px;
+    }
+
+    .service-card {
+      position: relative;
+      min-height: 310px;
+      padding: 34px;
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, 0.82);
+      border: 1px solid rgba(61, 58, 53, 0.07);
+      transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow);
+    }
+
+    .service-number {
+      display: inline-block;
+      margin-bottom: 42px;
+      color: var(--accent);
+      font-size: 0.86rem;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+    }
+
+    .service-icon {
+      margin-bottom: 18px;
+      font-size: 2rem;
+    }
+
+    .service-card h3 {
+      margin-bottom: 14px;
+      font-size: 1.35rem;
+      line-height: 1.4;
+    }
+
+    .service-card p {
+      color: var(--text-soft);
+      font-size: 0.97rem;
+    }
+
+    .belief-grid {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 55px;
+      align-items: center;
+    }
+
+    .belief-shape {
+      position: relative;
+      min-height: 400px;
+      border-radius: 38px;
+      overflow: hidden;
+      background:
+        linear-gradient(145deg, #e7d6c9 0%, #f5eee4 44%, #dce8df 100%);
+      box-shadow: var(--shadow);
+    }
+
+    .belief-shape::before,
+    .belief-shape::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+    }
+
+    .belief-shape::before {
+      width: 250px;
+      height: 250px;
+      right: -55px;
+      top: -55px;
+      background: rgba(255, 255, 255, 0.55);
+    }
+
+    .belief-shape::after {
+      width: 180px;
+      height: 180px;
+      left: 28px;
+      bottom: -60px;
+      background: rgba(201, 120, 85, 0.22);
+    }
+
+    .belief-words {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      padding: 48px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .belief-words strong {
+      font-size: clamp(1.7rem, 4vw, 3rem);
+      line-height: 1.25;
+    }
+
+    .belief-words span {
+      color: var(--text-soft);
+    }
+
+    .belief-copy p {
+      color: var(--text-soft);
+      font-size: 1.05rem;
+    }
+
+    .belief-copy p + p {
+      margin-top: 18px;
+    }
+
+    .contact {
+      padding-top: 80px;
+      padding-bottom: 110px;
+    }
+
+    .contact-card {
+      padding: 56px;
+      text-align: center;
+      border-radius: 36px;
+      background:
+        linear-gradient(135deg, #4d4941 0%, #332f2a 100%);
+      color: #fff;
+      box-shadow: 0 24px 60px rgba(54, 47, 41, 0.18);
+    }
+
+    .contact-card .section-label {
+      color: #f3c5af;
+    }
+
+    .contact-card .section-title {
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 18px;
+    }
+
+    .contact-card p {
+      max-width: 650px;
+      margin: 0 auto 30px;
+      color: rgba(255,255,255,0.72);
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .contact-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 13px 20px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      color: #fff;
+      font-weight: 700;
+      transition: background 0.2s ease;
+    }
+
+    .contact-link:hover {
+      background: rgba(255, 255, 255, 0.17);
+    }
+
+    footer {
+      padding: 26px 0 36px;
+      text-align: center;
+      color: var(--text-soft);
+      font-size: 0.86rem;
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        min-height: auto;
+      }
+
+      .hero-grid,
+      .belief-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-grid {
+        gap: 44px;
+      }
+
+      .hero-art {
+        min-height: 420px;
+      }
+
+      .service-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .service-card {
+        min-height: auto;
+      }
+
+      .belief-shape {
+        min-height: 340px;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .container {
+        width: min(calc(100% - 28px), var(--max-width));
+      }
+
+      .nav-inner {
+        min-height: 64px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding: 64px 0 60px;
+      }
+
+      h1 {
+        font-size: clamp(2.55rem, 13vw, 4.4rem);
+      }
+
+      .hero-text {
+        font-size: 1rem;
+      }
+
+      .hero-actions {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .hero-art {
+        min-height: 350px;
+      }
+
+      .visual-card {
+        width: 100%;
+        max-width: 350px;
+      }
+
+      .visual-content {
+        padding: 34px 28px;
+      }
+
+      .visual-quote {
+        font-size: 1.28rem;
+      }
+
+      section {
+        padding: 76px 0;
+      }
+
+      .about-box,
+      .service-card {
+        padding: 28px;
+      }
+
+      .belief-words {
+        padding: 32px;
+      }
+
+      .contact {
+        padding-top: 50px;
+        padding-bottom: 80px;
+      }
+
+      .contact-card {
+        padding: 42px 24px;
+        border-radius: 28px;
+      }
+
+      .contact-links {
+        flex-direction: column;
+      }
+
+      .contact-link {
+        justify-content: center;
+        width: 100%;
+      }
+    }
   </style>
 </head>
+
 <body>
-<p class="p1">&lt;!DOCTYPE html&gt;</p>
-<p class="p1">&lt;html lang="zh-Hant"&gt;</p>
-<p class="p1">&lt;head&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta charset="UTF-8" /&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta</p>
-<p class="p1"><span class="Apple-converted-space">    </span>name="description"</p>
-<p class="p1"><span class="Apple-converted-space">    </span>content="陪伴你探索自己、看見更多可能，在人生低潮與轉折中找回信心，也協助年輕人建立人生方向與自我管理能力。"</p>
-<p class="p1"><span class="Apple-converted-space">  </span>/&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;title&gt;探索自己，活出更多可能&lt;/title&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;style&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>:root {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>--bg: #fbf8f3;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>--bg-soft: #f5eee4;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>--card: rgba(255, 255, 255, 0.82);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>--text: #3d3a35;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>--text-soft: #706a61;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>--accent: #c97855;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>--accent-dark: #9f583d;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>--accent-soft: #f3d7c8;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>--green: #718b78;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>--line: rgba(61, 58, 53, 0.1);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>--shadow: 0 18px 50px rgba(86, 66, 52, 0.08);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>--radius-lg: 30px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>--radius-md: 22px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>--radius-sm: 14px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>--max-width: 1120px;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>* {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>box-sizing: border-box;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin: 0;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 0;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>html {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>scroll-behavior: smooth;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>body {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-family:</p>
-<p class="p1"><span class="Apple-converted-space">        </span>"Noto Sans TC",</p>
-<p class="p1"><span class="Apple-converted-space">        </span>"PingFang TC",</p>
-<p class="p1"><span class="Apple-converted-space">        </span>"Microsoft JhengHei",</p>
-<p class="p1"><span class="Apple-converted-space">        </span>system-ui,</p>
-<p class="p1"><span class="Apple-converted-space">        </span>-apple-system,</p>
-<p class="p1"><span class="Apple-converted-space">        </span>sans-serif;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: var(--text);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background:</p>
-<p class="p1"><span class="Apple-converted-space">        </span>radial-gradient(circle at 10% 10%, rgba(243, 215, 200, 0.65), transparent 28%),</p>
-<p class="p1"><span class="Apple-converted-space">        </span>radial-gradient(circle at 90% 30%, rgba(204, 219, 205, 0.55), transparent 25%),</p>
-<p class="p1"><span class="Apple-converted-space">        </span>var(--bg);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>line-height: 1.8;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>letter-spacing: 0.02em;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>a {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: inherit;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>text-decoration: none;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.container {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>width: min(calc(100% - 40px), var(--max-width));</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin: 0 auto;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>nav {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>position: sticky;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>top: 0;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>z-index: 100;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: rgba(251, 248, 243, 0.86);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>backdrop-filter: blur(14px);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>-webkit-backdrop-filter: blur(14px);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-bottom: 1px solid var(--line);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.nav-inner {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>min-height: 72px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>align-items: center;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>justify-content: space-between;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>gap: 24px;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.brand {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>align-items: center;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>gap: 10px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-weight: 800;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 1.05rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.brand-mark {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>width: 38px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>height: 38px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: grid;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>place-items: center;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 50%;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: var(--accent-soft);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 1.1rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.nav-links {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>align-items: center;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>gap: 28px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: var(--text-soft);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.94rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-weight: 600;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.nav-links a {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>transition: color 0.2s ease;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.nav-links a:hover {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: var(--accent-dark);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.hero {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>min-height: calc(100vh - 72px);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>align-items: center;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 90px 0 80px;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.hero-grid {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: grid;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>grid-template-columns: 1.15fr 0.85fr;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>gap: 70px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>align-items: center;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.eyebrow {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: inline-flex;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>align-items: center;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>gap: 8px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 8px 14px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-bottom: 24px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 999px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: rgba(255, 255, 255, 0.65);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border: 1px solid rgba(201, 120, 85, 0.18);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: var(--accent-dark);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.88rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-weight: 700;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>h1 {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>max-width: 720px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: clamp(2.7rem, 6vw, 5.5rem);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>line-height: 1.12;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>letter-spacing: -0.035em;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-bottom: 28px;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>h1 span {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: var(--accent);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.hero-text {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>max-width: 680px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: var(--text-soft);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: clamp(1rem, 1.7vw, 1.18rem);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-bottom: 36px;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.hero-actions {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>flex-wrap: wrap;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>align-items: center;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>gap: 14px;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.btn {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: inline-flex;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>align-items: center;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>justify-content: center;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>min-height: 52px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 0 24px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 999px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-weight: 800;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>transition:</p>
-<p class="p1"><span class="Apple-converted-space">        </span>transform 0.2s ease,</p>
-<p class="p1"><span class="Apple-converted-space">        </span>box-shadow 0.2s ease,</p>
-<p class="p1"><span class="Apple-converted-space">        </span>background 0.2s ease;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.btn:hover {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>transform: translateY(-2px);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.btn-primary {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: var(--accent);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: #fff;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>box-shadow: 0 12px 28px rgba(201, 120, 85, 0.25);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.btn-primary:hover {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: var(--accent-dark);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.btn-secondary {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: rgba(255, 255, 255, 0.7);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border: 1px solid var(--line);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.hero-art {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>position: relative;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>min-height: 490px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: grid;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>place-items: center;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.visual-card {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>position: relative;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>width: min(100%, 410px);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>aspect-ratio: 0.88;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>overflow: hidden;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 42px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background:</p>
-<p class="p1"><span class="Apple-converted-space">        </span>linear-gradient(</p>
-<p class="p1"><span class="Apple-converted-space">          </span>145deg,</p>
-<p class="p1"><span class="Apple-converted-space">          </span>rgba(255,255,255,0.92),</p>
-<p class="p1"><span class="Apple-converted-space">          </span>rgba(245,238,228,0.78)</p>
-<p class="p1"><span class="Apple-converted-space">        </span>);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border: 1px solid rgba(255,255,255,0.8);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>box-shadow: var(--shadow);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.visual-circle {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>position: absolute;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 50%;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>filter: blur(1px);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.circle-one {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>width: 230px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>height: 230px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>top: -40px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>right: -45px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: var(--accent-soft);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.circle-two {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>width: 190px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>height: 190px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>left: -50px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>bottom: 65px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: rgba(166, 193, 171, 0.45);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.circle-three {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>width: 90px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>height: 90px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>right: 38px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>bottom: 45px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: rgba(242, 205, 125, 0.58);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.visual-content {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>position: absolute;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>inset: 0;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 48px 38px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>flex-direction: column;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>justify-content: space-between;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>z-index: 2;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.visual-icon {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>width: 64px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>height: 64px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: grid;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>place-items: center;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 20px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: rgba(255, 255, 255, 0.78);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>box-shadow: 0 10px 30px rgba(83, 67, 56, 0.08);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 2rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.visual-quote {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>max-width: 290px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 1.55rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>line-height: 1.5;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-weight: 800;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.visual-caption {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: var(--text-soft);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.9rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>section {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 105px 0;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.section-label {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-bottom: 14px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: var(--accent-dark);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>text-transform: uppercase;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>letter-spacing: 0.16em;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.82rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-weight: 800;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.section-title {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>max-width: 720px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: clamp(2rem, 4vw, 3.25rem);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>line-height: 1.25;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>letter-spacing: -0.025em;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-bottom: 24px;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.section-intro {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>max-width: 760px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: var(--text-soft);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 1.05rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.about-box {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-top: 42px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 42px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-radius: var(--radius-lg);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: var(--card);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border: 1px solid rgba(255, 255, 255, 0.9);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>box-shadow: var(--shadow);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.about-box p + p {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-top: 20px;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.highlight {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: var(--accent-dark);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-weight: 800;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.services {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: rgba(255, 255, 255, 0.34);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-top: 1px solid rgba(61, 58, 53, 0.05);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-bottom: 1px solid rgba(61, 58, 53, 0.05);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.service-grid {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: grid;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>grid-template-columns: repeat(3, 1fr);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>gap: 22px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-top: 46px;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.service-card {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>position: relative;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>min-height: 310px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 34px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-radius: var(--radius-md);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: rgba(255, 255, 255, 0.82);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border: 1px solid rgba(61, 58, 53, 0.07);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>transition:</p>
-<p class="p1"><span class="Apple-converted-space">        </span>transform 0.25s ease,</p>
-<p class="p1"><span class="Apple-converted-space">        </span>box-shadow 0.25s ease;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.service-card:hover {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>transform: translateY(-6px);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>box-shadow: var(--shadow);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.service-number {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: inline-block;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-bottom: 42px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: var(--accent);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.86rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-weight: 900;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>letter-spacing: 0.12em;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.service-icon {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-bottom: 18px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 2rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.service-card h3 {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-bottom: 14px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 1.35rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>line-height: 1.4;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.service-card p {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: var(--text-soft);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.97rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.belief-grid {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: grid;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>grid-template-columns: 0.85fr 1.15fr;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>gap: 55px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>align-items: center;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.belief-shape {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>position: relative;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>min-height: 400px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 38px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>overflow: hidden;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background:</p>
-<p class="p1"><span class="Apple-converted-space">        </span>linear-gradient(145deg, #e7d6c9 0%, #f5eee4 44%, #dce8df 100%);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>box-shadow: var(--shadow);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.belief-shape::before,</p>
-<p class="p1"><span class="Apple-converted-space">    </span>.belief-shape::after {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>content: "";</p>
-<p class="p1"><span class="Apple-converted-space">      </span>position: absolute;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 50%;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.belief-shape::before {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>width: 250px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>height: 250px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>right: -55px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>top: -55px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: rgba(255, 255, 255, 0.55);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.belief-shape::after {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>width: 180px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>height: 180px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>left: 28px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>bottom: -60px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: rgba(201, 120, 85, 0.22);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.belief-words {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>position: absolute;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>inset: 0;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>z-index: 2;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 48px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>flex-direction: column;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>justify-content: center;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>gap: 12px;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.belief-words strong {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: clamp(1.7rem, 4vw, 3rem);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>line-height: 1.25;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.belief-words span {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: var(--text-soft);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.belief-copy p {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: var(--text-soft);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 1.05rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.belief-copy p + p {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-top: 18px;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.contact {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding-top: 80px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding-bottom: 110px;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.contact-card {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 56px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>text-align: center;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 36px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background:</p>
-<p class="p1"><span class="Apple-converted-space">        </span>linear-gradient(135deg, #4d4941 0%, #332f2a 100%);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: #fff;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>box-shadow: 0 24px 60px rgba(54, 47, 41, 0.18);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.contact-card .section-label {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: #f3c5af;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.contact-card .section-title {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-left: auto;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-right: auto;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-bottom: 18px;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.contact-card p {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>max-width: 650px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin: 0 auto 30px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: rgba(255,255,255,0.72);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.contact-links {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>flex-wrap: wrap;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>justify-content: center;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>gap: 12px;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.contact-link {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: inline-flex;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>align-items: center;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>gap: 9px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 13px 20px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 999px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: rgba(255, 255, 255, 0.1);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border: 1px solid rgba(255, 255, 255, 0.14);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: #fff;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-weight: 700;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>transition: background 0.2s ease;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.contact-link:hover {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: rgba(255, 255, 255, 0.17);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>footer {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 26px 0 36px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>text-align: center;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: var(--text-soft);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.86rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>@media (max-width: 900px) {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>.hero {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>min-height: auto;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>.hero-grid,</p>
-<p class="p1"><span class="Apple-converted-space">      </span>.belief-grid {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>grid-template-columns: 1fr;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>.hero-grid {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>gap: 44px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>.hero-art {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>min-height: 420px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>.service-grid {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>grid-template-columns: 1fr;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>.service-card {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>min-height: auto;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>.belief-shape {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>min-height: 340px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>@media (max-width: 680px) {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>.container {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>width: min(calc(100% - 28px), var(--max-width));</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>.nav-inner {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>min-height: 64px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>.nav-links {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>display: none;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>.hero {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>padding: 64px 0 60px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>h1 {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>font-size: clamp(2.55rem, 13vw, 4.4rem);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>.hero-text {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>font-size: 1rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>.hero-actions {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>align-items: stretch;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>flex-direction: column;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>.btn {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>width: 100%;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>.hero-art {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>min-height: 350px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>.visual-card {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>width: 100%;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>max-width: 350px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>.visual-content {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>padding: 34px 28px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>.visual-quote {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>font-size: 1.28rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>section {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>padding: 76px 0;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>.about-box,</p>
-<p class="p1"><span class="Apple-converted-space">      </span>.service-card {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>padding: 28px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>.belief-words {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>padding: 32px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>.contact {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>padding-top: 50px;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>padding-bottom: 80px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>.contact-card {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>padding: 42px 24px;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>border-radius: 28px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>.contact-links {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>flex-direction: column;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>.contact-link {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>justify-content: center;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>width: 100%;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;/style&gt;</p>
-<p class="p1">&lt;/head&gt;</p>
-<p class="p2"><br></p>
-<p class="p1">&lt;body&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;nav&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="container nav-inner"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;a class="brand" href="#home" aria-label="回到首頁"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;span class="brand-mark"&gt;☀️&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;span&gt;我的個人品牌&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/a&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="nav-links"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;a href="#about"&gt;關於我&lt;/a&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;a href="#services"&gt;服務專長&lt;/a&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;a href="#belief"&gt;我的理念&lt;/a&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;a href="#contact"&gt;聯絡我&lt;/a&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;/nav&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;main&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;section class="hero" id="home"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="container hero-grid"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="eyebrow"&gt;🌱 自我探索・成長陪伴・人生規劃&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;h1&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>探索自己，&lt;br /&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>活出&lt;span&gt;更多可能&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/h1&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;p class="hero-text"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>在低潮時重新看見自己，在迷惘時探索新的方向。</p>
-<p class="p1"><span class="Apple-converted-space">            </span>我相信真正有力量的改變，不只是找到答案，</p>
-<p class="p1"><span class="Apple-converted-space">            </span>而是對自己產生更多好奇，逐漸長出支持自己的信心。</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/p&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="hero-actions"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;a class="btn btn-primary" href="mailto:clsun456@gmail.com"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>開始探索我的可能</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/a&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;a class="btn btn-secondary" href="#services"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>了解我的服務</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/a&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="hero-art" aria-hidden="true"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="visual-card"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="visual-circle circle-one"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="visual-circle circle-two"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="visual-circle circle-three"&gt;&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="visual-content"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;div class="visual-icon"&gt;✨&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="visual-quote"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>「你的人生，不只一種可能。」</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="visual-caption"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>好奇・覺察・信心・行動</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;section id="about"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="container"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="section-label"&gt;About&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;h2 class="section-title"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>陪你重新認識自己，成為能支持自己的人</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/h2&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;p class="section-intro"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>我關心的，不只是「問題怎麼解決」，而是當一個人遇到低潮、</p>
-<p class="p1"><span class="Apple-converted-space">          </span>人生轉折或對未來感到迷惘時，如何重新與自己建立連結。</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/p&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="about-box"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>我是&lt;strong&gt;【你的姓名／暱稱】&lt;/strong&gt;，陪伴人們在低潮與人生轉折中</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="highlight"&gt;重新看見自己&lt;/span&gt;，</p>
-<p class="p1"><span class="Apple-converted-space">            </span>也協助年輕人提早探索方向、建立自我管理能力。</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/p&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>我相信，每個人都擁有比自己想像中更多的可能。</p>
-<p class="p1"><span class="Apple-converted-space">            </span>透過好奇、覺察與行動，我希望陪你更深入地探索自己，</p>
-<p class="p1"><span class="Apple-converted-space">            </span>看見原本忽略的能力與資源，逐漸建立信心，</p>
-<p class="p1"><span class="Apple-converted-space">            </span>最終成為一個能夠理解自己、支持自己，也為自己做選擇的人。</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;section class="services" id="services"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="container"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="section-label"&gt;Services&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;h2 class="section-title"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>從理解自己開始，走向更有選擇的人生</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/h2&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;p class="section-intro"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>不論你正在經歷轉折，還是希望提早為未來做好準備，</p>
-<p class="p1"><span class="Apple-converted-space">          </span>我會透過對話、提問與探索，陪你一步步找到屬於自己的方向。</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/p&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="service-grid"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;article class="service-card"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="service-number"&gt;01&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="service-icon"&gt;🔎&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;h3&gt;人生探索與自我教練&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>透過對話、提問與覺察，陪你更認識自己，</p>
-<p class="p1"><span class="Apple-converted-space">              </span>發現原本沒有看見的優勢、資源與人生可能性。</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/article&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;article class="service-card"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="service-number"&gt;02&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="service-icon"&gt;🌿&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;h3&gt;低潮與人生轉折陪伴&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>當生活卡住、失去方向或信心時，</p>
-<p class="p1"><span class="Apple-converted-space">              </span>陪你重新整理經驗、理解自己的需要，</p>
-<p class="p1"><span class="Apple-converted-space">              </span>找回內在力量並走出下一步。</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/article&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;article class="service-card"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="service-number"&gt;03&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="service-icon"&gt;🧭&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;h3&gt;青年人生規劃與自我管理&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>協助年輕人提早探索「我是誰、我要去哪裡」，</p>
-<p class="p1"><span class="Apple-converted-space">              </span>建立目標、行動力與自我管理能力，</p>
-<p class="p1"><span class="Apple-converted-space">              </span>更有準備地面對未來。</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/article&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;section id="belief"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="container belief-grid"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="belief-shape" aria-hidden="true"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="belief-words"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;span&gt;我相信&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;strong&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>好奇自己，&lt;br /&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>就是改變的開始。</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/strong&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="belief-copy"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="section-label"&gt;My Belief&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;h2 class="section-title"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>我不替你決定答案，而是陪你更有能力找到自己的答案</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/h2&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>人在低潮時，很容易把注意力放在「我哪裡不好」；</p>
-<p class="p1"><span class="Apple-converted-space">            </span>面對未來時，也容易急著尋找一個標準答案。</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/p&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>但我更相信，真正長久的力量來自於：</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="highlight"&gt;願意對自己保持好奇、理解自己的需要，</p>
-<p class="p1"><span class="Apple-converted-space">            </span>看見自己的可能，並相信自己能夠做出下一個選擇。&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/p&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>因此，我希望提供的不只是一次對話或一個方法，</p>
-<p class="p1"><span class="Apple-converted-space">            </span>而是一種你未來也能繼續帶著走的自我支持能力。</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;section class="contact" id="contact"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="container"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="contact-card"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="section-label"&gt;Contact&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;h2 class="section-title"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>也許，現在就是重新探索自己的開始</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/h2&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>如果你正在人生低潮、面對轉折，</p>
-<p class="p1"><span class="Apple-converted-space">            </span>或希望為自己與下一代提早做好人生準備，</p>
-<p class="p1"><span class="Apple-converted-space">            </span>歡迎與我聯絡。</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/p&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="contact-links"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;a</p>
-<p class="p1"><span class="Apple-converted-space">              </span>class="contact-link"</p>
-<p class="p1"><span class="Apple-converted-space">              </span>href="mailto:clsun456@gmail.com"</p>
-<p class="p1"><span class="Apple-converted-space">              </span>aria-label="寄 Email 給我"</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>✉️ clsun456@gmail.com</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/a&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;!--</p>
-<p class="p1"><span class="Apple-converted-space">              </span>若之後有 Facebook、Instagram、LinkedIn、LINE 等社群連結，</p>
-<p class="p1"><span class="Apple-converted-space">              </span>可將下方註解取消，並把網址與文字替換成你的資料。</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;a</p>
-<p class="p1"><span class="Apple-converted-space">              </span>class="contact-link"</p>
-<p class="p1"><span class="Apple-converted-space">              </span>href="https://example.com"</p>
-<p class="p1"><span class="Apple-converted-space">              </span>target="_blank"</p>
-<p class="p1"><span class="Apple-converted-space">              </span>rel="noopener noreferrer"</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>🔗 我的社群</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/a&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>--&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;/main&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;footer&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="container"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>© 2026 【你的姓名／暱稱】 · 探索自己，活出更多可能</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;/footer&gt;</p>
-<p class="p1">&lt;/body&gt;</p>
-<p class="p1">&lt;/html&gt;</p>
+  <nav>
+    <div class="container nav-inner">
+      <a class="brand" href="#home" aria-label="回到首頁">
+        <span class="brand-mark">☀️</span>
+        <span>我的個人品牌</span>
+      </a>
+
+      <div class="nav-links">
+        <a href="#about">關於我</a>
+        <a href="#services">服務專長</a>
+        <a href="#belief">我的理念</a>
+        <a href="#contact">聯絡我</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">🌱 自我探索・成長陪伴・人生規劃</div>
+
+          <h1>
+            探索自己，<br />
+            活出<span>更多可能</span>
+          </h1>
+
+          <p class="hero-text">
+            在低潮時重新看見自己，在迷惘時探索新的方向。
+            我相信真正有力量的改變，不只是找到答案，
+            而是對自己產生更多好奇，逐漸長出支持自己的信心。
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="mailto:clsun456@gmail.com">
+              開始探索我的可能
+            </a>
+
+            <a class="btn btn-secondary" href="#services">
+              了解我的服務
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-art" aria-hidden="true">
+          <div class="visual-card">
+            <div class="visual-circle circle-one"></div>
+            <div class="visual-circle circle-two"></div>
+            <div class="visual-circle circle-three"></div>
+
+            <div class="visual-content">
+              <div class="visual-icon">✨</div>
+
+              <div>
+                <div class="visual-quote">
+                  「你的人生，不只一種可能。」
+                </div>
+                <div class="visual-caption">
+                  好奇・覺察・信心・行動
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-label">About</div>
+
+        <h2 class="section-title">
+          陪你重新認識自己，成為能支持自己的人
+        </h2>
+
+        <p class="section-intro">
+          我關心的，不只是「問題怎麼解決」，而是當一個人遇到低潮、
+          人生轉折或對未來感到迷惘時，如何重新與自己建立連結。
+        </p>
+
+        <div class="about-box">
+          <p>
+            我是<strong>【你的姓名／暱稱】</strong>，陪伴人們在低潮與人生轉折中
+            <span class="highlight">重新看見自己</span>，
+            也協助年輕人提早探索方向、建立自我管理能力。
+          </p>
+
+          <p>
+            我相信，每個人都擁有比自己想像中更多的可能。
+            透過好奇、覺察與行動，我希望陪你更深入地探索自己，
+            看見原本忽略的能力與資源，逐漸建立信心，
+            最終成為一個能夠理解自己、支持自己，也為自己做選擇的人。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="services" id="services">
+      <div class="container">
+        <div class="section-label">Services</div>
+
+        <h2 class="section-title">
+          從理解自己開始，走向更有選擇的人生
+        </h2>
+
+        <p class="section-intro">
+          不論你正在經歷轉折，還是希望提早為未來做好準備，
+          我會透過對話、提問與探索，陪你一步步找到屬於自己的方向。
+        </p>
+
+        <div class="service-grid">
+          <article class="service-card">
+            <span class="service-number">01</span>
+            <div class="service-icon">🔎</div>
+            <h3>人生探索與自我教練</h3>
+            <p>
+              透過對話、提問與覺察，陪你更認識自己，
+              發現原本沒有看見的優勢、資源與人生可能性。
+            </p>
+          </article>
+
+          <article class="service-card">
+            <span class="service-number">02</span>
+            <div class="service-icon">🌿</div>
+            <h3>低潮與人生轉折陪伴</h3>
+            <p>
+              當生活卡住、失去方向或信心時，
+              陪你重新整理經驗、理解自己的需要，
+              找回內在力量並走出下一步。
+            </p>
+          </article>
+
+          <article class="service-card">
+            <span class="service-number">03</span>
+            <div class="service-icon">🧭</div>
+            <h3>青年人生規劃與自我管理</h3>
+            <p>
+              協助年輕人提早探索「我是誰、我要去哪裡」，
+              建立目標、行動力與自我管理能力，
+              更有準備地面對未來。
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="belief">
+      <div class="container belief-grid">
+        <div class="belief-shape" aria-hidden="true">
+          <div class="belief-words">
+            <span>我相信</span>
+            <strong>
+              好奇自己，<br />
+              就是改變的開始。
+            </strong>
+          </div>
+        </div>
+
+        <div class="belief-copy">
+          <div class="section-label">My Belief</div>
+
+          <h2 class="section-title">
+            我不替你決定答案，而是陪你更有能力找到自己的答案
+          </h2>
+
+          <p>
+            人在低潮時，很容易把注意力放在「我哪裡不好」；
+            面對未來時，也容易急著尋找一個標準答案。
+          </p>
+
+          <p>
+            但我更相信，真正長久的力量來自於：
+            <span class="highlight">願意對自己保持好奇、理解自己的需要，
+            看見自己的可能，並相信自己能夠做出下一個選擇。</span>
+          </p>
+
+          <p>
+            因此，我希望提供的不只是一次對話或一個方法，
+            而是一種你未來也能繼續帶著走的自我支持能力。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="container">
+        <div class="contact-card">
+          <div class="section-label">Contact</div>
+
+          <h2 class="section-title">
+            也許，現在就是重新探索自己的開始
+          </h2>
+
+          <p>
+            如果你正在人生低潮、面對轉折，
+            或希望為自己與下一代提早做好人生準備，
+            歡迎與我聯絡。
+          </p>
+
+          <div class="contact-links">
+            <a
+              class="contact-link"
+              href="mailto:clsun456@gmail.com"
+              aria-label="寄 Email 給我"
+            >
+              ✉️ clsun456@gmail.com
+            </a>
+
+            <!--
+              若之後有 Facebook、Instagram、LinkedIn、LINE 等社群連結，
+              可將下方註解取消，並把網址與文字替換成你的資料。
+
+            <a
+              class="contact-link"
+              href="https://example.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              🔗 我的社群
+            </a>
+            -->
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      © 2026 【你的姓名／暱稱】 · 探索自己，活出更多可能
+    </div>
+  </footer>
 </body>
 </html>
